@@ -1,2 +1,7 @@
-# KIV_KPG_Triomino
-Domácí úkol z KIV/KPG.
+# 3. domácí úkol z KIV/KPG
+## Triomino
+
+Adresáře
+- src - Zdrojové kódy aplikace
+- doc - Dokumentace
+
