@@ -55,7 +55,7 @@ public class WindowLayout {
 	 * @return spodni panel
 	 */
 	public Parent getBottomPane() {
-		String multicolorStr = "Multicolor";		
+		String multicolorStr = "My colors";		
 		HBox hBox = new HBox();
 		hBox.setPadding(new Insets(5D, 5D, 5D, 5D));
 		hBox.setMinHeight(40D);
@@ -82,6 +82,7 @@ public class WindowLayout {
 		dColorPicker.setValue(drawing.getdColor());
 		dColorPicker.setPrefWidth(50D);
 		colorBox.setSpacing(5D);
+		colorBox.setAlignment(Pos.CENTER);
 		colorBox.getChildren().addAll(aColorPicker, bColorPicker, cColorPicker, dColorPicker);
 		
 		// mezera
