@@ -250,7 +250,7 @@ public class Drawing {
 	}
 	
 	/**
-	 * Vrati barvu obrazeni
+	 * Vrati barvu obtazeni
 	 * @param fill barva vyplne
 	 * @return barva obtazeni
 	 */
@@ -258,6 +258,9 @@ public class Drawing {
 		int r = (int)(fill.getRed()*255)-30 ;
 		int g = (int)(fill.getGreen()*255)-30;
 		int b = (int)(fill.getBlue()*255)-30;
+		if(r < 0 && g < 0 && b < 0) {
+			r += 60; g += 60; b += 60;
+		}
 		if(r < 0) r = 0;
 		if(g < 0) g = 0;
 		if(b < 0) b = 0;
