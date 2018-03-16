@@ -18,9 +18,9 @@ import javafx.scene.paint.Color;
 public class Drawing {
 
 	/** Vice barev na jeden dil */
-	private BooleanProperty multiColourPolynom; 
+	private BooleanProperty multiColourPolygom; 
 	
-	/** Velikost polynomu */
+	/** Velikost mnohouhelniku */
 	private DoubleProperty sizeProperty;
 	
 	/** Barva dilku */
@@ -47,7 +47,7 @@ public class Drawing {
 	public Drawing(Canvas canvas) {
 		this.activeCanvas = canvas;
 		this.sizeProperty = new SimpleDoubleProperty(50);
-		this.multiColourPolynom = new SimpleBooleanProperty(true);
+		this.multiColourPolygom = new SimpleBooleanProperty(true);
 		g = canvas.getGraphicsContext2D();
 		observeCanvasSize();
 	}
@@ -112,7 +112,7 @@ public class Drawing {
 					}
 				
 					// prvni sloupec bez otoceni :.
-					if(column%4 == 0 && line == 0) {
+					if(column%4 == 0 && line == 0 && column != 0) {
 						drawPolygon0(size);
 					}
 				
@@ -176,7 +176,7 @@ public class Drawing {
 	 * xx
 	 */
 	private void drawPolygon0(double size) {
-		if(multiColourPolynom.get()) {
+		if(multiColourPolygom.get()) {
 			drawPolygon(size);
 		} else {
 			drawSingleColorPolygon(size, randomColor());
@@ -214,7 +214,7 @@ public class Drawing {
 	private void drawPolygon3(double size) {
 		g.translate(2*size, 0);
 		g.rotate(90);
-		if(multiColourPolynom.get()) {
+		if(multiColourPolygom.get()) {
 			drawPolygon(size);
 		} else {
 			drawSingleColorPolygon(size, randomColor());
@@ -298,7 +298,7 @@ public class Drawing {
 	}
 	
 	/**
-	 * Vykresleni polynomu A
+	 * Vykresleni mnohouhelniku A
 	 * @param size velikost
 	 * @param aFill vypln
 	 * @param aStroke obtahnuti
@@ -316,7 +316,7 @@ public class Drawing {
 	}
 	
 	/**
-	 * Vykresleni polynomu B
+	 * Vykresleni mnohouhelniku B
 	 * @param size velikost
 	 * @param bFill vypln
 	 * @param bStroke obtahnuti
@@ -336,7 +336,7 @@ public class Drawing {
 	}
 	
 	/**
-	 * Vykresleni polynomu C
+	 * Vykresleni mnohouhelniku C
 	 * @param size velikost
 	 * @param cFill vypln
 	 * @param cStroke obtahnuti
@@ -354,7 +354,7 @@ public class Drawing {
 	}
 	
 	/**
-	 * Vykresleni polynomu D
+	 * Vykresleni mnohouhelniku D
 	 * @param size velikost
 	 * @param dFill vypln
 	 * @param dStroke obtahnuti
@@ -413,16 +413,16 @@ public class Drawing {
 	 * Vice barev na jeden dil
 	 * @return vice barev na jeden dil
 	 */
-	public BooleanProperty multiColourPolynom() {
-		return multiColourPolynom;
+	public BooleanProperty multiColourPolygom() {
+		return multiColourPolygom;
 	}
 
 	/**
 	 * Nastavi, zdali je pouzito vice barev na jeden dil
-	 * @param multiColourPolynom pouzito vice barev na jeden dil
+	 * @param multiColourPolygom pouzito vice barev na jeden dil
 	 */
-	public void setMultiColourPolynom(boolean multiColourPolynom) {
-		this.multiColourPolynom.set(multiColourPolynom);
+	public void setMultiColourPolygom(boolean multiColourPolygom) {
+		this.multiColourPolygom.set(multiColourPolygom);
 		redraw();
 	}
 

@@ -36,6 +36,56 @@ Zadáním úkolu je vytvoření programu vykreslujícího dlaždicový vzor zná
 \paragraph{}
 Vykreslování probíhá ve\nobreakspace třídě \emph{Drawing}. Pro\nobreakspace vykreslení triomino se\nobreakspace zavolá metoda \emph{\mbox{drawTriomino}}, která na\nobreakspace základě velikosti okna a\nobreakspace velikosti mnohoúhelníku provede potřebný počet iterací pro\nobreakspace vyplnění celého okna. Vyplňování probíhá od\nobreakspace levého dolního rohu.
 
+\paragraph{}
+\begin{algorithm}[H]
+	\While{není dosaženo pravého hornho okraje okna} {
+		\For{další sloupec} {
+			\For{další řádek} {
+				\BlankLine
+				nastav pozici vykreslování na další řádek a sloupec
+				\BlankLine
+				\If{sloupec = 0 a řádek (mod 4) = 0}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec (mod 4) = 0 a řádek = 0 a sloupec $\neq$ 0}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec (mod 4) = 2 a řádek = 0}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec = 0 a řádek (mod 4) = 2}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec = 1 a řádek (mod 4) = 0 a řádek $\neq$ 0}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec = 1 a řádek (mod 4) = 2 a řádek $\neq$ 2}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec (mod 4) = 0 a řádek = 1 a sloupec $\neq$ 0}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec (mod 4) = 2 a řádek = 1 a sloupec $\neq$ 2}{
+					vykresli mnohoúhelník				
+				}
+				\If{sloupec = řádek}{
+					vykresli mnohoúhelník				
+				}
+				\BlankLine
+				obnov pozici vykreslování na původní pozici
+				\BlankLine
+			}
+		}
+		\BlankLine
+			nastav řádek = 0 a sloupec = 0
+		\BlankLine
+		\BlankLine
+			zmenši oblast na které probíha vykreslování o 3 velikosti mnohoúhelníku
+		\BlankLine
+	}
+ \caption{Vykreslení mnohoúhelníků}
+\end{algorithm}
+
 \section{Uživatelská dokumentace}
 
 \paragraph{}

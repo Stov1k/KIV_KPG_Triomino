@@ -63,9 +63,9 @@ public class WindowLayout {
 		hBox.setSpacing(10D);
 		//Text randomColor = new Text(randomColorStr);
 		
-		// vice barev na jeden polynom
+		// vice barev na jeden mnohouhelnik
 		CheckBox multiColor = new CheckBox(multicolorStr);
-		multiColor.setSelected(drawing.multiColourPolynom().get());
+		multiColor.setSelected(drawing.multiColourPolygom().get());
 		
 		// volba barev
 		HBox colorBox = new HBox();
@@ -118,11 +118,11 @@ public class WindowLayout {
 		// zmena barevnosti
 		multiColor.selectedProperty().addListener((observable, oldValue, newValue) -> {
 			if(newValue != null) {
-				drawing.setMultiColourPolynom(newValue);
+				drawing.setMultiColourPolygom(newValue);
 			}
 		});
 		
-		drawing.multiColourPolynom().addListener((observable, oldValue, newValue) -> {
+		drawing.multiColourPolygom().addListener((observable, oldValue, newValue) -> {
 			if(newValue != null) {
 				multiColor.setSelected(newValue);
 			}
