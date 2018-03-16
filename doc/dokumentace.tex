@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage[]{algorithm2e}
 \usepackage{enumitem}
+\usepackage{gensymb}
 
 \subject{Západočeská univerzita v\nobreakspace Plzni\\Fakulta aplikovaných věd\\KIV/KPG}
 \author{Pavel Zelenka\\A16B0176P\\zelenkap@students.zcu.cz}
@@ -31,6 +32,9 @@ Zadáním úkolu je vytvoření programu vykreslujícího dlaždicový vzor zná
 \paragraph{}
 \textbf{Triomino} je polymino třetíto řádu. Mnohoúhelníky vyplňující plochu se\nobreakspace skládají ze\nobreakspace tří stejně velkých čtverců. Tyto stejně velké čtverce jsou\nobreakspace napojeny ve\nobreakspace tvaru tvořící symbol\nobreakspace \texttt{L}.
 
+\paragraph{}
+Čtvercová plocha nelze těmito mnohoúhelníky zcela vyplnit, vždy zůstane pozice o\nobreakspace velikosti jedné třetiny jednoho mnohoúhelníku nezaplněna. Dle\nobreakspace Golombovy teorie lze vyplnit zcela plochu $2^n \times 2^n$ po\nobreakspace vypuštění jednoho čtverce. V\nobreakspace případě, že bude požadováno vydláždit plochu okna aplikace zcela, vypustím pravý horní čtverec a\nobreakspace v\nobreakspace okně zobrazím pouze levý dolní čtverec.
+
 \section{Popis řešení}
 
 \paragraph{}
@@ -38,6 +42,11 @@ Vykreslování probíhá ve\nobreakspace třídě \emph{Drawing}. Pro\nobreakspa
 
 \paragraph{}
 \begin{algorithm}[H]
+	\BlankLine
+		urči velikost vykreslovací oblasti
+	\BlankLine
+		nastav řádek = 0 a sloupec = 0
+	\BlankLine
 	\While{není dosaženo pravého hornho okraje okna} {
 		\For{další sloupec} {
 			\For{další řádek} {
@@ -45,31 +54,31 @@ Vykreslování probíhá ve\nobreakspace třídě \emph{Drawing}. Pro\nobreakspa
 				nastav pozici vykreslování na další řádek a sloupec
 				\BlankLine
 				\If{sloupec = 0 a řádek (mod 4) = 0}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník v základní podobě			
 				}
 				\If{sloupec (mod 4) = 0 a řádek = 0 a sloupec $\neq$ 0}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník v základní podobě			
 				}
 				\If{sloupec (mod 4) = 2 a řádek = 0}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník otočený o 90$\degree$		
 				}
 				\If{sloupec = 0 a řádek (mod 4) = 2}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník zrcadlově převrácený			
 				}
 				\If{sloupec = 1 a řádek (mod 4) = 0 a řádek $\neq$ 0}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník otočený o 90$\degree$ a zrcadlově převrácený					
 				}
 				\If{sloupec = 1 a řádek (mod 4) = 2 a řádek $\neq$ 2}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník otočený o 90$\degree$			
 				}
 				\If{sloupec (mod 4) = 0 a řádek = 1 a sloupec $\neq$ 0}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník otočený o 90$\degree$ a zrcadlově převrácený		
 				}
 				\If{sloupec (mod 4) = 2 a řádek = 1 a sloupec $\neq$ 2}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník zrcadlově převrácený				
 				}
 				\If{sloupec = řádek}{
-					vykresli mnohoúhelník				
+					vykresli mnohoúhelník v základní podobě				
 				}
 				\BlankLine
 				obnov pozici vykreslování na původní pozici
